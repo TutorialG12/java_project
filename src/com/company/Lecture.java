@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Lecture {
-    private ArrayList<Student> students = new ArrayList<>();
+    protected ArrayList<Student> students = new ArrayList<>();
 
     public void enter( Student student) {
         this.students.add(student);
