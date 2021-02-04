@@ -1,11 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
-    private List<Double> grades;
+    protected ArrayList<Double> grades;
 
-    public Student(List<Double> grades) {
+    public Student(ArrayList<Double> grades) {
         this.grades = grades;
     }
 
