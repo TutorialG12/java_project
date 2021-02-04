@@ -14,8 +14,6 @@ public class Student {
         for (double i : this.grades) {
             total += i;
         }
-        double average = total / this.grades.size();
-
-        return  average;
+        return  total / this.grades.size();
     }
 }
