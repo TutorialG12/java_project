@@ -35,6 +35,6 @@ class StudentTest {
         grades.add(7.8);
 
         Student David = new Student(grades,"David",Level.LEVEL300);
-        assertEquals(Levels.LEVEL300,David.getLevel());
+        assertEquals(Level.LEVEL300,David.getLevel());
     }
 }

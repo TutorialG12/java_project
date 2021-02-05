@@ -1,48 +1,48 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class Register {
 
-    ArrayList<Nameable> studentRegister = new ArrayList<>();
+    ArrayList<Student> studentRegister = new ArrayList<>();
 
-    public Register(ArrayList<Nameable> Persons){
-        this.studentRegister = Persons;
+    public Register(ArrayList<Student> students){
+        this.studentRegister = students;
     }
 
-    public ArrayList<String> getRegisterLevel(Level level){
-        ArrayList<String> studentNames = new ArrayList<>();
-        for(Nameable people : studentRegister){
-            Student aStudent  = (Student) people;
+    public Map<Level, List<Student>> getRegisterByLevel(Level level){
+        Map<Level, List<Student>> studentGroup = new HashMap<>();
+        ArrayList<Student> studentNames = new ArrayList<>();
+        for(Student aStudent : studentRegister){
             if(aStudent.getLevel() == level){
-                studentNames.add(people.getname());
+                studentNames.add(aStudent);
             }
         }
-        return studentNames;
+        studentGroup.put(level, studentNames);
+        return studentGroup;
     }
 
     public ArrayList<String> getRegister(){
         ArrayList<String> studentNames = new ArrayList<>();
-        for(Nameable people : studentRegister){
+        for(Student people : studentRegister){
             studentNames.add(people.getname());
         }
         return studentNames;
     }
 
+
+
     public String printReport (){
-        ArrayList<Student> studentRegisterLevel  = new ArrayList<>();
-        for(Nameable people : studentRegister){
-            Student aStudent  = (Student) people;
-            studentRegisterLevel.add(aStudent);
+        ArrayList<Student> studentRegisterbyLevel  = new ArrayList<>();
+        for(Nameable person : studentRegister){
+            Student aStudent  = (Student) person;
+            studentRegisterbyLevel.add(aStudent);
         }
-        System.out.println(studentRegisterLevel);
-        Collections.sort(studentRegisterLevel, new NameOrder());
-        System.out.println(studentRegisterLevel);
-        String stringRep = "Student Name>>>>>>>>>>>Level\n";
-        for(Student astudent : studentRegisterLevel){
-            stringRep = stringRep + astudent.getname() + ">>>>>>>>>>>>" + astudent.getLevel() + "\n";
+
+        Collections.sort(studentRegisterbyLevel, new NameOrderbyLevel());
+        String stringRep = "Student Name  >>>>>>>>>>>  Level\n";
+        for(Student astudent : studentRegisterbyLevel){
+            stringRep = stringRep + astudent.getname() + "  >>>>>>>>>>>>  " + astudent.getLevel() + "\n";
         }
         return stringRep;
     }
