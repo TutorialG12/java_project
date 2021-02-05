@@ -1,12 +1,18 @@
 package com.company;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Student {
-    private List<Double> grades;
 
-    public Student(List<Double> grades) {
+public class Student implements Nameable {
+    protected ArrayList<Double> grades;
+    private String name;
+
+    public Student(ArrayList<Double> grades) {
         this.grades = grades;
+    }
+    public Student(ArrayList<Double> grades, String name){
+        this(grades);
+        this.name = name;
     }
 
     public double getAverageGrade () {
@@ -14,8 +20,10 @@ public class Student {
         for (double i : this.grades) {
             total += i;
         }
-        double average = total / this.grades.size();
+        return  total / this.grades.size();
+    }
 
-        return  average;
+    public String getname(){
+        return this.name;
     }
 }
