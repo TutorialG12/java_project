@@ -2,9 +2,7 @@ package com.company;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,7 +31,9 @@ class RegisterTest {
     Student Tom = new Student(grades, "Tom", Level.LEVEL100);
 
     List<Student> studentList = Arrays.asList(James, Evans, Quil, Joy, Ben, Samantha, Mercy, Eric, George, Kevin, Matilda, Tom);
+    List<Student> studentList300 = Arrays.asList(Quil, Kevin, Matilda);
 
+    Map<Level, List<Student>> nameListLevelby300 = new HashMap<>();
 
 
     @Test
@@ -51,8 +51,9 @@ class RegisterTest {
         names.addAll(namesList);
         namesLevel300.addAll(namesListLevel300);
         students.addAll(studentList);
+        nameListLevelby300.put(Level.LEVEL300, studentList300);
         Register university = new Register(students);
-        assertEquals(namesLevel300, university.getRegisterByLevel(Level.LEVEL300));
+        assertEquals(nameListLevelby300, university.getRegisterByLevel(Level.LEVEL300));
     }
 
     @Test
@@ -63,5 +64,17 @@ class RegisterTest {
         students.addAll(studentList);
         Register university = new Register(students);
         System.out.println(university.printReport());
+    }
+
+    @Test
+    void sort() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        students.addAll(studentList);
+        Register university = new Register(students);
+        sortByName name = new sortByName();
+        university.sort(name);
+        ArrayList reg = university.getRegister();
+        System.out.println(reg.toString());
     }
 }
