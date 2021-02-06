@@ -23,8 +23,8 @@ public class Student implements Nameable,HasLevel {
 
     public double getAverageGrade () {
         double total = 0;
-        for (double i : this.grades) {
-            total += i;
+        for (double grade : this.grades) {
+            total += grade;
         }
         return  total / this.grades.size();
     }
