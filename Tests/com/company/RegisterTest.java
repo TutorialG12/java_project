@@ -65,4 +65,16 @@ class RegisterTest {
         Register university = new Register(students);
         System.out.println(university.printReport());
     }
+
+    @Test
+    void sort() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        students.addAll(studentList);
+        Register university = new Register(students);
+        sortByName name = new sortByName();
+        university.sort(name);
+        ArrayList reg = university.getRegister();
+        System.out.println(reg.toString());
+    }
 }
