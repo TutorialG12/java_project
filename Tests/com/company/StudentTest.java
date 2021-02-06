@@ -25,4 +25,16 @@ class StudentTest {
 
         assertEquals(averageTest, Nunana.getAverageGrade());
     }
+
+    @Test
+    void getLevel() {
+        grades.add(7.0);
+        grades.add(5.8);
+        grades.add(4.5);
+        grades.add(4.8);
+        grades.add(7.8);
+
+        Student David = new Student(grades,"David",Level.LEVEL300);
+        assertEquals(Level.LEVEL300,David.getLevel());
+    }
 }

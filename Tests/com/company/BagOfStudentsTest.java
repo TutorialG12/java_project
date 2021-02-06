@@ -8,17 +8,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RegisterTest {
+class BagOfStudentsTest {
     List<Double> score = Arrays.asList(7.5, 5.6,8.2,8.1,4.5,7.6,1.6,8.6);
-    List<String> namesList = Arrays.asList("James", "Evans", "Quil", "Joy", "Ben", "Samantha", "Mercy", "Eric", "George", "Kevin", "Matilda", "Tom");
-    List<String> namesListLevel300 = Arrays.asList("Quil", "Kevin", "Matilda");
-
-
     ArrayList<Double> grades = new ArrayList<>();
-    ArrayList<String> names = new ArrayList<>();
-    ArrayList<String> namesLevel300 = new ArrayList<>();
-    ArrayList<Student> students = new ArrayList<>();
-
+    ArrayList<Student> empty = new ArrayList<>();
     Student James = new Student(grades, "James", Level.LEVEL100);
     Student Evans = new Student(grades, "Evans", Level.LEVEL200);
     Student Quil = new Student(grades, "Quil", Level.LEVEL300);
@@ -33,35 +26,25 @@ class RegisterTest {
     Student Tom = new Student(grades, "Tom", Level.LEVEL100);
 
     List<Student> studentList = Arrays.asList(James, Evans, Quil, Joy, Ben, Samantha, Mercy, Eric, George, Kevin, Matilda, Tom);
-
-
-
+    BagOfStudents aBag = new BagOfStudents();
     @Test
-    void getRegister() {
-        grades.addAll(score);
-        names.addAll(namesList);
-        students.addAll(studentList);
-        Register university = new Register(students);
-        assertEquals(names, university.getRegister());
+    void add() {
     }
 
     @Test
-    void getRegisterLevel() {
-        grades.addAll(score);
-        names.addAll(namesList);
-        namesLevel300.addAll(namesListLevel300);
-        students.addAll(studentList);
-        Register university = new Register(students);
-        assertEquals(namesLevel300, university.getRegisterByLevel(Level.LEVEL300));
+    void remove() {
     }
 
     @Test
-    void printReport() {
+    void clear() {
         grades.addAll(score);
-        names.addAll(namesList);
-        namesLevel300.addAll(namesListLevel300);
-        students.addAll(studentList);
-        Register university = new Register(students);
-        System.out.println(university.printReport());
+        aBag.add(James);
+        aBag.add(Evans);
+        aBag.add(Kevin);
+        aBag.add(Tom);
+        aBag.add(George);
+        aBag.add(Ben);
+        aBag.clear();
+        assertEquals(empty.isEmpty(), aBag.getStudents().isEmpty());
     }
 }
