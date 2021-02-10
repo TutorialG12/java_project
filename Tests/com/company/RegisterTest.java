@@ -64,4 +64,36 @@ class RegisterTest {
         Register university = new Register(students);
         System.out.println(university.printReport());
     }
+
+    @Test
+    void highestGrade() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+
+        System.out.println(university.highestGrade());
+    }
+
+    @Test
+    void averageOfAllStudentsGrades() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+
+        System.out.println(university.averageOfAllStudentsGrades());
+    }
+
+    @Test
+    void getStudentsScoringAbove60() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+        university.getStudentsScoringAbove60();
+    }
 }
