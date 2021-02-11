@@ -12,6 +12,8 @@ public class Register {
         this.studentRegister = students;
     }
 
+
+
     public Map<Level, List<Student>> getRegisterByLevel(Level level){
         Map<Level, List<Student>> studentGroup = new HashMap<>();
         List<Student> studentNames = new ArrayList<>();
@@ -81,5 +83,9 @@ public class Register {
             if(!(foundStudentName.size() > 0)) {
                 throw new StudentNotFoundException("Student not found exception");
             }
+    }
+
+    public void sort(Comparator<Student> sortby){
+        Collections.sort(studentRegister, sortby);
     }
 }
