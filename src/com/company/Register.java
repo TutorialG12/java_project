@@ -73,7 +73,7 @@ public class Register {
     }
 
     public void getStudentsScoringAbove60() {
-       studentRegister.stream().map( student -> student.studentGrades().filter( grade -> grade > 6.0 )).
+       studentRegister.stream().flatMapToDouble( student -> student.studentGrades().filter( grade -> grade > 6.0 )).
                forEach(grade -> System.out.println(grade));
     }
 
