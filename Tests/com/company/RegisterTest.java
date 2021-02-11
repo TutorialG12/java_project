@@ -1,5 +1,6 @@
 package com.company;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -33,8 +34,6 @@ class RegisterTest {
     Student Tom = new Student(grades, "Tom", Level.LEVEL100);
 
     List<Student> studentList = Arrays.asList(James, Evans, Quil, Joy, Ben, Samantha, Mercy, Eric, George, Kevin, Matilda, Tom);
-
-
 
     @Test
     void getRegister() {
@@ -95,5 +94,18 @@ class RegisterTest {
         students.addAll(studentList);
         Register university = new Register(students);
         university.getStudentsScoringAbove60();
+    }
+
+    @Test
+    void checkStudent() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+
+        assertThrows(StudentNotFoundException.class, () -> {
+                university.checkStudent("Philip");
+        });
     }
 }

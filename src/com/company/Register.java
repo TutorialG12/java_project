@@ -70,8 +70,16 @@ public class Register {
          return studentRegister.stream().mapToDouble( student -> student.getAverageGrade()).average().orElse(-1);
     }
 
-//    public void getStudentsScoringAbove60() {
-//
-//        studentRegister.stream().map( student -> student.studentGrades().filter( grade -> grade > 6.0 )).flatMapToDouble(grade -> g);
-//    }
+    public void getStudentsScoringAbove60() {
+       studentRegister.stream().map( student -> student.studentGrades().filter( grade -> grade > 6.0 )).
+               forEach(grade -> System.out.println(grade));
+    }
+
+    public void checkStudent(String student_name) throws StudentNotFoundException {
+            List<Student> foundStudentName = new ArrayList<>();
+            foundStudentName = studentRegister.stream().filter(student -> (student.getname() == student_name)).collect(Collectors.toList());
+            if(!(foundStudentName.size() > 0)) {
+                throw new StudentNotFoundException("Student not found exception");
+            }
+    }
 }
