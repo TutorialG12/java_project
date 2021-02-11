@@ -1,22 +1,23 @@
 package com.company;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.DoubleStream;
 
 
-public class Student implements Nameable,HasLevel {
-    protected ArrayList<Double> grades;
+public class Student implements Nameable,HasLevel  {
+    protected List<Double> grades;
     private String name;
     private Level level;
 
-    public Student(ArrayList<Double> grades) {
+    public Student(List<Double> grades) {
         this.grades = grades;
     }
-    public Student(ArrayList<Double> grades, String name){
+    public Student(List<Double> grades, String name){
         this(grades);
         this.name = name;
     }
 
-    public Student(ArrayList<Double> grades, String name, Level level){
+    public Student(List<Double> grades, String name, Level level){
         this(grades, name);
         this.level = level;
     }
@@ -29,6 +30,10 @@ public class Student implements Nameable,HasLevel {
         return  total / this.grades.size();
     }
 
+    public DoubleStream studentGrades() {
+        return grades.stream().mapToDouble(grade -> grade);
+    }
+
     public String getname(){
         return this.name;
     }
@@ -36,4 +41,7 @@ public class Student implements Nameable,HasLevel {
     public Level getLevel(){
         return this.level;
     }
+
+
+
 }

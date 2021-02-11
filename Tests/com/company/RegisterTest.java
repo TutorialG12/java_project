@@ -1,5 +1,6 @@
 package com.company;
 
+//import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -32,6 +33,7 @@ class RegisterTest {
 
     List<Student> studentList = Arrays.asList(James, Evans, Quil, Joy, Ben, Samantha, Mercy, Eric, George, Kevin, Matilda, Tom);
     List<Student> studentList300 = Arrays.asList(Quil, Kevin, Matilda);
+
 
     Map<Level, List<Student>> nameListLevelby300 = new HashMap<>();
 
@@ -67,14 +69,59 @@ class RegisterTest {
     }
 
     @Test
-    void sort() {
+    void highestGrade() {
         grades.addAll(score);
         names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
         students.addAll(studentList);
         Register university = new Register(students);
-        sortByName name = new sortByName();
-        university.sort(name);
-        ArrayList reg = university.getRegister();
-        System.out.println(reg.toString());
+
+        System.out.println(university.highestGrade());
     }
+
+    @Test
+    void averageOfAllStudentsGrades() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+
+        System.out.println(university.averageOfAllStudentsGrades());
+    }
+
+    @Test
+    void getStudentsScoringAbove60() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+        university.getStudentsScoringAbove60();
+    }
+
+    @Test
+    void checkStudent() {
+        grades.addAll(score);
+        names.addAll(namesList);
+        namesLevel300.addAll(namesListLevel300);
+        students.addAll(studentList);
+        Register university = new Register(students);
+
+        assertThrows(StudentNotFoundException.class, () -> {
+                university.checkStudent("Philip");
+        });
+    }
+
+    @Test
+        void sort() {
+            grades.addAll(score);
+            names.addAll(namesList);
+            students.addAll(studentList);
+            Register university = new Register(students);
+            sortByName name = new sortByName();
+            university.sort(name);
+            university.getRegister();
+            //System.out.println(reg.toString());
+        }
 }
